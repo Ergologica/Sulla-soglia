@@ -1,31 +1,104 @@
-<section class="hero">
-  <div class="overlay">
-    <h1 class="font-urban">SULLA SOGLIA</h1>
-    <p class="font-modern">La giustizia che ripara, nel cuore di Sassari.</p>
-    <a href="#booking" class="btn-red">PRENOTA UN INCONTRO</a>
-  </div>
-</section>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Sulla Soglia | Giustizia Riparativa Sassari</title>
+    <style>
+        /* Setup Colori e Font */
+        :root {
+            --nero: #1a1a1a;
+            --rosso: #D90429;
+            --grigio-chiaro: #f4f4f4;
+            --bianco: #ffffff;
+        }
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; color: var(--nero); line-height: 1.6; }
+        section { padding: 80px 10%; }
+        h1, h2 { text-transform: uppercase; font-weight: 900; }
+        
+        /* Header */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; background: var(--bianco); border-bottom: 3px solid var(--nero); position: sticky; top: 0; z-index: 1000; }
+        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--nero); font-weight: bold; }
 
-<style>
-  .hero {
-    background-image: url('sassari-urban.jpg');
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  .font-urban {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 5rem;
-    color: #1a1a1a;
-  }
-  .btn-red {
-    background-color: #D90429;
-    color: white;
-    padding: 15px 30px;
-    text-decoration: none;
-    font-weight: bold;
-    border: 2px solid #1a1a1a; /* Effetto punk */
-  }
-</style>
+        /* Hero */
+        .hero { background: var(--grigio-chiaro); text-align: center; padding: 120px 10%; border-bottom: 5px solid var(--rosso); }
+        .hero h1 { font-size: 4rem; margin-bottom: 10px; }
+        .btn-main { background: var(--nero); color: var(--bianco); padding: 15px 30px; text-decoration: none; display: inline-block; margin-top: 20px; }
+
+        /* Griglia Servizi */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
+        .service-card { border: 2px solid var(--nero); padding: 20px; transition: 0.3s; }
+        .service-card:hover { background: var(--rosso); color: var(--bianco); }
+
+        /* FAQ Accordion Semplificato */
+        .faq-item { border-bottom: 1px solid #ccc; padding: 15px 0; cursor: pointer; }
+
+        /* Footer */
+        footer { background: var(--nero); color: var(--bianco); padding: 50px 10%; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><strong>SULLA SOGLIA</strong></div>
+        <nav class="nav-links">
+            <a href="#progetto">Il Progetto</a>
+            <a href="#servizi">Servizi</a>
+            <a href="#metodo">Metodo</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contatti" style="color: var(--rosso);">Contattami</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>SULLA SOGLIA</h1>
+        <p>Facilitazione dei conflitti e Giustizia Riparativa nel cuore di Sassari.</p>
+        <a href="#booking" class="btn-main">PRENOTA UNA CONSULENZA GRATUITA</a>
+    </section>
+
+    <section id="progetto">
+        <h2>Il Progetto</h2>
+        <p>Sulla Soglia non è un ufficio legale, ma un presidio di comunità. Lavoriamo per trasformare l'urto del conflitto in un'opportunità di responsabilità. Portiamo strumenti tecnici rigorosi dove la tensione rischia di spezzare i legami sociali.</p>
+    </section>
+
+    <section id="servizi" style="background: var(--grigio-chiaro);">
+        <h2>Servizi Professionali</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Scuole</h3>
+                <p>Circle di classe per bullismo, gestione dei conflitti tra studenti e supporto alla comunità educante.</p>
+            </div>
+            <div class="service-card">
+                <h3>Giustizia e MAP</h3>
+                <p>Percorsi di Messa alla Prova per adulti e minori con relazioni tecniche per Tribunali e UEPE.</p>
+            </div>
+            <div class="service-card">
+                <h3>Comunità</h3>
+                <p>Mediazione familiare e condominiale. Risoluzione di dispute nel tessuto sociale urbano.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="metodo">
+        <h2>Il Nostro Metodo in 3 Step</h2>
+        <ol>
+            <li><strong>Accoglienza:</strong> Ascoltiamo le parti separatamente per garantire sicurezza e neutralità.</li>
+            <li><strong>Facilitazione:</strong> Creiamo il "Circle", lo spazio protetto per il dialogo diretto.</li>
+            <li><strong>Accordo:</strong> Definiamo impegni concreti e riparativi per il futuro.</li>
+        </ol>
+    </section>
+
+    <section id="faq">
+        <h2>Domande Frequenti</h2>
+        <div class="faq-item"><strong>È un servizio legale?</strong> +</div>
+        <div class="faq-item"><strong>Quanto costa un intervento?</strong> +</div>
+        <div class="faq-item"><strong>Lavorate con i minori?</strong> +</div>
+    </section>
+
+    <footer>
+        <p><strong>SULLA SOGLIA</strong> - Pratiche Riparative e Dialogiche</p>
+        <p>P.IVA: 00000000000 | Sassari, Italia</p>
+        <p>Email: info@sullasoglia.it | IG: @sullasoglia_sassari</p>
+    </footer>
+
+</body>
+</html>
