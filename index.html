@@ -6,85 +6,87 @@
     <title>Sulla Soglia | Giustizia Riparativa Sassari</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* --- SETUP BASE (Invariato) --- */
         :root {
             --nero: #1a1a1a;
             --rosso: #D90429;
             --grigio-cemento: #e0e0e0;
             --bianco: #ffffff;
-            --shadow: 5px 5px 0px var(--nero); /* Ombra più netta */
+            --shadow: 5px 5px 0px var(--nero);
         }
+
         * { box-sizing: border-box; }
         body { 
             font-family: 'Montserrat', sans-serif; 
             margin: 0; color: var(--nero); line-height: 1.6; background-color: var(--bianco);
+            scroll-behavior: smooth;
         }
-        h1, h2, h3 { 
-            font-family: 'Bebas Neue', cursive; letter-spacing: 2px; margin-top: 0;
-        }
+        h1, h2, h3 { font-family: 'Bebas Neue', cursive; letter-spacing: 2px; margin-top: 0; }
         section { padding: 100px 10%; }
 
-        /* --- HEADER (Invariato) --- */
+        /* --- HEADER --- */
         header { 
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 20px 10%; background: var(--bianco); 
+            padding: 15px 10%; background: var(--bianco); 
             border-bottom: 4px solid var(--nero); 
             position: sticky; top: 0; z-index: 1000; 
         }
-        .logo { font-size: 1.8rem; font-family: 'Bebas Neue'; color: var(--nero); text-decoration: none; }
-        .logo span { color: var(--rosso); }
+
+        /* Logo con Maschera Rotonda */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--nero);
+        }
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* Maschera rotonda */
+            object-fit: cover; /* Evita distorsioni dell'immagine */
+            border: 2px solid var(--nero);
+            box-shadow: 2px 2px 0px var(--rosso);
+        }
+        .logo-text { font-size: 1.8rem; font-family: 'Bebas Neue'; line-height: 1; }
+        .logo-text span { color: var(--rosso); }
+
         .nav-links a { 
             margin-left: 20px; text-decoration: none; color: var(--nero); 
             font-weight: 700; text-transform: uppercase; font-size: 0.9rem; transition: 0.2s;
         }
         .nav-links a:hover { color: var(--rosso); }
 
-        /* --- NUOVA HERO SECTION CON SLIDESHOW --- */
+        /* --- HERO SECTION CON SLIDESHOW --- */
         .hero { 
-            /* Rimosso sfondo grigio statico */
             text-align: center; 
-            /* Aumentato padding per dare spazio alle immagini */
             padding: 180px 10%; 
             border-bottom: 8px solid var(--nero);
-            position: relative; /* Necessario per posizionare lo slider */
+            position: relative; 
             overflow: hidden;
         }
-
-        /* Contenitore dello Slider (Background) */
-        .hero-slider {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1; /* Sta dietro al testo */
-        }
-
-        /* La singola diapositiva */
+        .hero-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .slide {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0; /* Nascosta di default */
-            transition: opacity 1.5s ease-in-out; /* Dissolvenza lenta */
-            filter: grayscale(30%) contrast(120%); /* Effetto urban "sporco" sulle foto */
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            opacity: 0; transition: opacity 1.5s ease-in-out;
+            filter: grayscale(20%) contrast(110%);
         }
-
-        /* La diapositiva visibile */
         .slide.active { opacity: 1; }
-
-        /* Contenitore del Testo (Overlay Brutalista) */
-        .hero-content {
-            position: relative;
-            z-index: 2; /* Sta sopra le immagini */
-            background: rgba(255, 255, 255, 0.85); /* Sfondo bianco semi-trasparente */
-            padding: 40px;
-            border: 4px solid var(--nero); /* Bordo spesso stile "tag" */
-            box-shadow: var(--shadow);
-            max-width: 800px;
-            margin: 0 auto; /* Centrato */
+        
+        /* Overlay per leggibilità testo */
+        .hero::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.2); z-index: 2;
         }
 
+        .hero-content {
+            position: relative; z-index: 3; 
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 50px; border: 4px solid var(--nero); 
+            box-shadow: var(--shadow); max-width: 850px; margin: 0 auto;
+        }
         .hero h1 { font-size: 4.5rem; line-height: 0.9; margin-bottom: 20px; }
-        .hero p { font-size: 1.2rem; margin-bottom: 30px; font-weight: 700; }
+        .hero p { font-size: 1.3rem; margin-bottom: 30px; font-weight: 700; text-transform: uppercase; }
 
         .btn-main { 
             background: var(--nero); color: var(--bianco); 
@@ -93,85 +95,70 @@
             border: 3px solid var(--nero); box-shadow: var(--shadow);
             transition: 0.2s;
         }
-        .btn-main:hover { 
-            transform: translate(-3px, -3px);
-            box-shadow: 8px 8px 0px var(--rosso); background: var(--rosso);
-        }
+        .btn-main:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0px var(--rosso); background: var(--rosso); }
 
-        /* --- SEZIONI SUCCESSIVE (Stile invariato) --- */
-        #progetto h2 { font-size: 3rem; color: var(--rosso); }
-        .focus-text { font-size: 1.4rem; font-weight: 300; border-left: 5px solid var(--nero); padding-left: 20px; }
+        /* --- SEZIONI CONTENUTO --- */
+        #progetto h2 { font-size: 3.5rem; color: var(--rosso); }
+        .focus-text { font-size: 1.5rem; font-weight: 400; border-left: 8px solid var(--nero); padding-left: 25px; max-width: 900px; }
 
-        .services-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px; margin-top: 50px; 
-        }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
         .service-card { 
             border: 4px solid var(--nero); padding: 40px; background: var(--bianco);
             box-shadow: var(--shadow); transition: 0.3s;
         }
-        .service-card:hover { 
-            transform: translateY(-5px); background: var(--nero); color: var(--bianco);
-            box-shadow: 8px 8px 0px var(--rosso);
-        }
-        .service-card h3 { font-size: 2rem; }
+        .service-card:hover { transform: translateY(-8px); background: var(--nero); color: var(--bianco); box-shadow: 10px 10px 0px var(--rosso); }
+        .service-card h3 { font-size: 2.2rem; }
 
-        .method-steps { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 40px; }
-        .step { 
-            flex: 1; min-width: 250px; background: var(--grigio-cemento); 
-            padding: 30px; border: 3px solid var(--nero);
-            box-shadow: var(--shadow);
-        }
-        .step-num { 
-            font-family: 'Bebas Neue'; font-size: 3rem; color: var(--rosso); display: block; 
-        }
+        .method-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
+        .step { background: var(--grigio-cemento); padding: 40px; border: 4px solid var(--nero); box-shadow: var(--shadow); }
+        .step-num { font-family: 'Bebas Neue'; font-size: 3.5rem; color: var(--rosso); display: block; line-height: 1; margin-bottom: 10px; }
 
-        details { border-bottom: 3px solid var(--nero); padding: 20px 0; cursor: pointer; }
-        summary { 
-            font-weight: 700; list-style: none; text-transform: uppercase; 
-            font-size: 1.1rem; display: flex; justify-content: space-between;
-        }
-        summary::after { content: "+"; color: var(--rosso); font-size: 1.5rem; }
+        details { border-bottom: 4px solid var(--nero); padding: 25px 0; cursor: pointer; }
+        summary { font-weight: 700; list-style: none; text-transform: uppercase; font-size: 1.2rem; display: flex; justify-content: space-between; align-items: center; }
+        summary::after { content: "+"; color: var(--rosso); font-size: 2rem; }
         details[open] summary::after { content: "-"; }
-        details p { padding-top: 15px; font-weight: 300; }
+        details p { padding-top: 20px; font-size: 1.1rem; }
 
-        footer { background: var(--nero); color: var(--bianco); padding: 80px 10%; text-align: center; }
-        .footer-logo { font-family: 'Bebas Neue'; font-size: 2.5rem; margin-bottom: 20px; }
-        .social-links a { color: var(--bianco); margin: 0 10px; text-decoration: none; font-weight: bold; }
+        /* --- FOOTER --- */
+        footer { background: var(--nero); color: var(--bianco); padding: 80px 10%; text-align: center; border-top: 10px solid var(--rosso); }
+        .footer-logo { font-family: 'Bebas Neue'; font-size: 3rem; margin-bottom: 20px; }
+        .social-links a { color: var(--bianco); margin: 0 15px; text-decoration: none; font-weight: bold; border-bottom: 2px solid var(--rosso); padding-bottom: 2px; }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 3rem; }
-            .hero { padding: 100px 5%; }
-            .hero-content { padding: 25px; }
-            header { flex-direction: column; gap: 15px; }
-            .nav-links a { margin: 0 10px; font-size: 0.8rem; }
+            .hero { padding: 120px 5%; }
+            header { flex-direction: column; gap: 20px; padding: 20px 5%; }
+            .nav-links a { margin: 0 8px; font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="#" class="logo">SULLA <span>SOGLIA</span></a>
+        <a href="#" class="logo-container">
+            <img src="sulla%20soglia.jpg" alt="Logo Sulla Soglia" class="logo-img">
+            <div class="logo-text">SULLA <span>SOGLIA</span></div>
+        </a>
         <nav class="nav-links">
             <a href="#progetto">Il Progetto</a>
             <a href="#servizi">Servizi</a>
             <a href="#metodo">Metodo</a>
             <a href="#faq">FAQ</a>
-            <a href="#contatti" style="border: 2px solid var(--rosso); padding: 5px 10px; box-shadow: 3px 3px 0 var(--nero);">Contattami</a>
+            <a href="mailto:info@sullasoglia.it" style="background: var(--rosso); color: white; padding: 8px 15px; box-shadow: 3px 3px 0 var(--nero);">Contattami</a>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-slider">
-            <div class="slide active" style="background-image: url('https://source.unsplash.com/1600x900/?urban,concrete,wall');"></div>
-            <div class="slide" style="background-image: url('https://source.unsplash.com/1600x900/?street,city,texture');"></div>
-            <div class="slide" style="background-image: url('https://source.unsplash.com/1600x900/?architecture,brutalist');"></div>
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1517733948461-12158942d62b?auto=format&fit=crop&q=80&w=1600');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=1600');"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&q=80&w=1600');"></div>
         </div>
 
         <div class="hero-content">
             <h1>GESTIRE IL CONFLITTO,<br>RICOSTRUIRE LA COMUNITÀ.</h1>
-            <p>Pratiche riparative e dialogiche a Sassari. Portiamo soluzioni concrete dove il dialogo si è interrotto.</p>
-            <a href="#booking" class="btn-main">PRENOTA UNA CONSULENZA GRATUITA</a>
+            <p>Giustizia riparativa e pratiche dialogiche a Sassari.</p>
+            <a href="#contatti" class="btn-main">PRENOTA UNA CONSULENZA GRATUITA</a>
         </div>
     </section>
 
@@ -240,30 +227,21 @@
     <footer id="contatti">
         <div class="footer-logo">SULLA SOGLIA</div>
         <p>Professionista in regime forfettario | Sassari (SS)<br>
-        Partita IVA: 00000000000</p>
+        Partita IVA: IT00000000000</p>
         <div class="social-links">
-            <a href="#">INSTAGRAM</a> | <a href="#">LINKEDIN</a> | <a href="mailto:info@sullasoglia.it">EMAIL</a>
+            <a href="#">INSTAGRAM</a> <a href="#">LINKEDIN</a> <a href="mailto:info@sullasoglia.it">EMAIL</a>
         </div>
-        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">© 2026 Sulla Soglia. Tutti i diritti riservati.</p>
+        <p style="margin-top: 50px; font-size: 0.8rem; opacity: 0.5;">© 2026 Sulla Soglia. Design Urban-Brutalist.</p>
     </footer>
 
     <script>
-        // Seleziona tutte le diapositive
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
-        const slideInterval = 5000; // Cambia immagine ogni 5000ms (5 secondi)
-
-        function nextSlide() {
-            // Rimuove la classe 'active' dalla diapositiva corrente
+        setInterval(() => {
             slides[currentSlide].classList.remove('active');
-            // Calcola l'indice della prossima diapositiva (torna a 0 se è l'ultima)
             currentSlide = (currentSlide + 1) % slides.length;
-            // Aggiunge la classe 'active' alla prossima diapositiva
             slides[currentSlide].classList.add('active');
-        }
-
-        // Avvia il timer
-        setInterval(nextSlide, slideInterval);
+        }, 5000);
     </script>
 
 </body>
