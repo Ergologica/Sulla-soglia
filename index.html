@@ -2,102 +2,264 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sulla Soglia | Giustizia Riparativa Sassari</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Setup Colori e Font */
         :root {
             --nero: #1a1a1a;
             --rosso: #D90429;
-            --grigio-chiaro: #f4f4f4;
+            --grigio-cemento: #e0e0e0;
             --bianco: #ffffff;
+            --shadow: 4px 4px 0px var(--nero);
         }
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; color: var(--nero); line-height: 1.6; }
-        section { padding: 80px 10%; }
-        h1, h2 { text-transform: uppercase; font-weight: 900; }
-        
-        /* Header */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 10%; background: var(--bianco); border-bottom: 3px solid var(--nero); position: sticky; top: 0; z-index: 1000; }
-        .nav-links a { margin-left: 20px; text-decoration: none; color: var(--nero); font-weight: bold; }
 
-        /* Hero */
-        .hero { background: var(--grigio-chiaro); text-align: center; padding: 120px 10%; border-bottom: 5px solid var(--rosso); }
-        .hero h1 { font-size: 4rem; margin-bottom: 10px; }
-        .btn-main { background: var(--nero); color: var(--bianco); padding: 15px 30px; text-decoration: none; display: inline-block; margin-top: 20px; }
+        * { box-sizing: border-box; }
+
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            color: var(--nero); 
+            line-height: 1.6; 
+            background-color: var(--bianco);
+        }
+
+        h1, h2, h3 { 
+            font-family: 'Bebas Neue', cursive; 
+            letter-spacing: 2px; 
+            margin-top: 0;
+        }
+
+        section { padding: 100px 10%; }
+
+        /* Header Brutalista */
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 20px 10%; 
+            background: var(--bianco); 
+            border-bottom: 4px solid var(--nero); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+
+        .logo { font-size: 1.8rem; font-family: 'Bebas Neue'; color: var(--nero); text-decoration: none; }
+        .logo span { color: var(--rosso); }
+
+        .nav-links a { 
+            margin-left: 20px; 
+            text-decoration: none; 
+            color: var(--nero); 
+            font-weight: 700; 
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--rosso); }
+
+        /* Hero Section Urban */
+        .hero { 
+            background: var(--grigio-cemento); 
+            text-align: center; 
+            padding: 150px 10%; 
+            border-bottom: 8px solid var(--nero);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 { font-size: 5rem; line-height: 0.9; margin-bottom: 20px; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px; font-weight: 400; }
+
+        .btn-main { 
+            background: var(--nero); 
+            color: var(--bianco); 
+            padding: 18px 35px; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 3px solid var(--nero);
+            box-shadow: var(--shadow);
+            transition: 0.2s;
+        }
+
+        .btn-main:hover { 
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px var(--rosso);
+            background: var(--rosso);
+        }
+
+        /* Sezione Progetto */
+        #progetto h2 { font-size: 3rem; color: var(--rosso); }
+        .focus-text { font-size: 1.4rem; font-weight: 300; border-left: 5px solid var(--nero); padding-left: 20px; }
 
         /* Griglia Servizi */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 40px; }
-        .service-card { border: 2px solid var(--nero); padding: 20px; transition: 0.3s; }
-        .service-card:hover { background: var(--rosso); color: var(--bianco); }
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            margin-top: 50px; 
+        }
 
-        /* FAQ Accordion Semplificato */
-        .faq-item { border-bottom: 1px solid #ccc; padding: 15px 0; cursor: pointer; }
+        .service-card { 
+            border: 4px solid var(--nero); 
+            padding: 40px; 
+            background: var(--bianco);
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+        }
+
+        .service-card:hover { 
+            transform: translateY(-5px);
+            background: var(--nero);
+            color: var(--bianco);
+        }
+
+        .service-card h3 { font-size: 2rem; }
+
+        /* Metodo Step */
+        .method-steps { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 40px; }
+        .step { 
+            flex: 1; 
+            min-width: 250px; 
+            background: var(--grigio-cemento); 
+            padding: 30px; 
+            border: 3px solid var(--nero);
+        }
+        .step-num { 
+            font-family: 'Bebas Neue'; 
+            font-size: 3rem; 
+            color: var(--rosso); 
+            display: block; 
+        }
+
+        /* FAQ con Details HTML5 */
+        details { 
+            border-bottom: 3px solid var(--nero); 
+            padding: 20px 0; 
+            cursor: pointer; 
+        }
+        summary { 
+            font-weight: 700; 
+            list-style: none; 
+            text-transform: uppercase; 
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        summary::after { content: "+"; color: var(--rosso); font-size: 1.5rem; }
+        details[open] summary::after { content: "-"; }
+        details p { padding-top: 15px; font-weight: 300; }
 
         /* Footer */
-        footer { background: var(--nero); color: var(--bianco); padding: 50px 10%; text-align: center; }
+        footer { 
+            background: var(--nero); 
+            color: var(--bianco); 
+            padding: 80px 10%; 
+            text-align: center; 
+        }
+        .footer-logo { font-family: 'Bebas Neue'; font-size: 2.5rem; margin-bottom: 20px; }
+        .social-links a { color: var(--bianco); margin: 0 10px; text-decoration: none; font-weight: bold; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            header { flex-direction: column; gap: 15px; }
+            .nav-links a { margin: 0 10px; font-size: 0.8rem; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo"><strong>SULLA SOGLIA</strong></div>
+        <a href="#" class="logo">SULLA <span>SOGLIA</span></a>
         <nav class="nav-links">
             <a href="#progetto">Il Progetto</a>
             <a href="#servizi">Servizi</a>
             <a href="#metodo">Metodo</a>
             <a href="#faq">FAQ</a>
-            <a href="#contatti" style="color: var(--rosso);">Contattami</a>
+            <a href="#contatti" style="border: 2px solid var(--rosso); padding: 5px 10px;">Contattami</a>
         </nav>
     </header>
 
     <section class="hero">
-        <h1>SULLA SOGLIA</h1>
-        <p>Facilitazione dei conflitti e Giustizia Riparativa nel cuore di Sassari.</p>
+        <h1>GESTIRE IL CONFLITTO,<br>RICOSTRUIRE LA COMUNITÀ.</h1>
+        <p>Pratiche riparative e dialogiche a Sassari. Portiamo soluzioni concrete dove il dialogo si è interrotto.</p>
         <a href="#booking" class="btn-main">PRENOTA UNA CONSULENZA GRATUITA</a>
     </section>
 
     <section id="progetto">
-        <h2>Il Progetto</h2>
-        <p>Sulla Soglia non è un ufficio legale, ma un presidio di comunità. Lavoriamo per trasformare l'urto del conflitto in un'opportunità di responsabilità. Portiamo strumenti tecnici rigorosi dove la tensione rischia di spezzare i legami sociali.</p>
+        <h2>Oltre il muro del disaccordo</h2>
+        <div class="focus-text">
+            Sulla Soglia non è un ufficio legale, ma uno spazio di incontro. Lavoriamo nelle scuole, nei tribunali e nei quartieri di Sassari per trasformare lo scontro in responsabilità. Non cerchiamo colpevoli, ma cerchiamo modi per riparare i legami.
+        </div>
     </section>
 
-    <section id="servizi" style="background: var(--grigio-chiaro);">
-        <h2>Servizi Professionali</h2>
+    <section id="servizi" style="background: var(--grigio-cemento); border-top: 5px solid var(--nero); border-bottom: 5px solid var(--nero);">
+        <h2>Ambiti di intervento</h2>
         <div class="services-grid">
             <div class="service-card">
-                <h3>Scuole</h3>
-                <p>Circle di classe per bullismo, gestione dei conflitti tra studenti e supporto alla comunità educante.</p>
+                <h3>SCUOLE</h3>
+                <p>Gestione bullismo e tensioni di classe. Trasformiamo la "nota sul registro" in un percorso di crescita per studenti e docenti.</p>
             </div>
             <div class="service-card">
-                <h3>Giustizia e MAP</h3>
-                <p>Percorsi di Messa alla Prova per adulti e minori con relazioni tecniche per Tribunali e UEPE.</p>
+                <h3>GIUSTIZIA (MAP)</h3>
+                <p>Supporto alla Messa alla Prova. Redazione di relazioni tecniche per Tribunali e UEPE con focus sulla riparazione reale del danno.</p>
             </div>
             <div class="service-card">
-                <h3>Comunità</h3>
-                <p>Mediazione familiare e condominiale. Risoluzione di dispute nel tessuto sociale urbano.</p>
+                <h3>COMUNITÀ</h3>
+                <p>Mediazione di vicinato e conflitti urbani. Facilitiamo il dialogo nel tessuto sociale di Sassari per evitare che le liti diventino cause legali.</p>
             </div>
         </div>
     </section>
 
     <section id="metodo">
-        <h2>Il Nostro Metodo in 3 Step</h2>
-        <ol>
-            <li><strong>Accoglienza:</strong> Ascoltiamo le parti separatamente per garantire sicurezza e neutralità.</li>
-            <li><strong>Facilitazione:</strong> Creiamo il "Circle", lo spazio protetto per il dialogo diretto.</li>
-            <li><strong>Accordo:</strong> Definiamo impegni concreti e riparativi per il futuro.</li>
-        </ol>
+        <h2>Il Percorso in 3 Fasi</h2>
+        <div class="method-steps">
+            <div class="step">
+                <span class="step-num">01</span>
+                <h3>Ascolto</h3>
+                <p>Incontri preliminari separati per garantire a tutti uno spazio sicuro in cui esprimersi senza giudizio.</p>
+            </div>
+            <div class="step">
+                <span class="step-num">02</span>
+                <h3>Circle</h3>
+                <p>L'incontro congiunto guidato. Un cerchio di dialogo dove ogni parola ha lo stesso peso e la stessa dignità.</p>
+            </div>
+            <div class="step">
+                <span class="step-num">03</span>
+                <h3>Patto</h3>
+                <p>La definizione di impegni concreti e riparativi. Non solo scuse, ma azioni reali per il futuro.</p>
+            </div>
+        </div>
     </section>
 
     <section id="faq">
-        <h2>Domande Frequenti</h2>
-        <div class="faq-item"><strong>È un servizio legale?</strong> +</div>
-        <div class="faq-item"><strong>Quanto costa un intervento?</strong> +</div>
-        <div class="faq-item"><strong>Lavorate con i minori?</strong> +</div>
+        <h2>Domande Comuni</h2>
+        <details>
+            <summary>È un servizio legale o terapeutico?</summary>
+            <p>Nessuno dei due. È un servizio di facilitazione. Non diamo sentenze e non facciamo terapia: aiutiamo le persone coinvolte in un conflitto a trovare una soluzione condivisa e riparativa.</p>
+        </details>
+        <details>
+            <summary>Quanto costa un intervento?</summary>
+            <p>Ogni situazione è unica. Offriamo pacchetti per le scuole e consulenze forfettarie per i percorsi MAP. Il primo colloquio di 15 minuti è sempre gratuito.</p>
+        </details>
+        <details>
+            <summary>Operate solo a Sassari?</summary>
+            <p>Il nostro cuore è a Sassari, ma interveniamo in tutta la provincia e nel resto della Sardegna, sia in presenza che online dove possibile.</p>
+        </details>
     </section>
 
-    <footer>
-        <p><strong>SULLA SOGLIA</strong> - Pratiche Riparative e Dialogiche</p>
-        <p>P.IVA: 00000000000 | Sassari, Italia</p>
-        <p>Email: info@sullasoglia.it | IG: @sullasoglia_sassari</p>
+    <footer id="contatti">
+        <div class="footer-logo">SULLA SOGLIA</div>
+        <p>Professionista in regime forfettario | Sassari (SS)<br>
+        Partita IVA: 00000000000</p>
+        <div class="social-links">
+            <a href="#">INSTAGRAM</a> | <a href="#">LINKEDIN</a> | <a href="mailto:info@sullasoglia.it">EMAIL</a>
+        </div>
+        <p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">© 2026 Sulla Soglia. Tutti i diritti riservati.</p>
     </footer>
 
 </body>
